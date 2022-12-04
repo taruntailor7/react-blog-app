@@ -6,10 +6,10 @@ export const Navbar = () => {
   return (
     <div className="navbar">
         <div className="topLeft">
-            <FaFacebookSquare color="#1877f2"/>
-            <FaTwitterSquare color="#1da1f2"/>
-            <FaPinterestSquare color="#b7081b"/>
-            <FaInstagramSquare color="#d33d6a"/>
+            <FaFacebookSquare color="#1877f2" cursor="pointer"/>
+            <FaTwitterSquare color="#1da1f2" cursor="pointer"/>
+            <FaPinterestSquare color="#b7081b" cursor="pointer"/>
+            <FaInstagramSquare color="#d33d6a" cursor="pointer"/>
         </div>
         <div className="topCenter">
             <ul className="topList">
