@@ -1,5 +1,5 @@
 .sidebar{
-    width: 30%;
+    width: 20%;
     margin: 20px;
     padding-bottom: 30px;
     background-color:#fdfbfb;
@@ -27,11 +27,12 @@
     text-align: center
 }
 .sidebarItem > img{
-    width: 100%;
+    width: 80%;
     margin-top:15px;
 }
 .sidebarItem > p{
     padding:30px;
+    text-align: justify;
 }
 .sidebarList{
     list-style: none;

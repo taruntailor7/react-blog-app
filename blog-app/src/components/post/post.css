@@ -1,5 +1,5 @@
 .post{
-    width: 450px;
+    width: 520px;
     margin: 0px 25px 40px 25px;
 }
 .postImg{
@@ -47,4 +47,5 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    text-align: justify;
 }
