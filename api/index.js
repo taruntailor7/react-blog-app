@@ -11,6 +11,13 @@ app.use(cors());
 
 let mongo_url = process.env.MONGO_URL
 
+app.get("/", (req, res) => {
+    res.send({
+        status: "success",
+        message:"Welcome to my blog website"
+    })
+})
+
 const connection = async () =>{
     try {
         await mongoose.connect(mongo_url,{
