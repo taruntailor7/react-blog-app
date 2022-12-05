@@ -13,7 +13,7 @@ export const Post = () => {
             Lorem ipsum dolor
             </span>
             <hr />
-            <span className="postDate">1 houe ago</span>
+            <span className="postDate">1 hour ago</span>
             <p className="postDesc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, 
             veniam minima? Porro nemo rem, sunt nihil cum fugit inventore est
             delectus praesentium modi ab, quisquam dolorum earum qui facilis fuga.
