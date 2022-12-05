@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import "./register.css"
 
 export const Register = () => {
@@ -13,7 +14,9 @@ export const Register = () => {
             <input type="password" className="registerInput" placeholder="Enter your password..."/>
             <button className="registerButton">Register</button>
         </form>
-        <button className="registerLoginButton">Login</button>
+        <button className="registerLoginButton">
+          <NavLink to="/login" className="link">Login</NavLink>
+        </button>
     </div>
   )
 }
