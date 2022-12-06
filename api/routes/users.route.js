@@ -66,4 +66,20 @@ router.delete('/:id',async (req, res) => {
     }
 })
 
+//Get User
+router.get("/:id", async (req, res) => {
+    try {
+        let user = await userModel.findById(req.params.id);
+        // 1st way to delete users password
+        user = user.toJSON();
+        delete user.password;
+        res.send(user);
+
+        // 2nd way to delete users password using spread operator
+        // const { password, ...others } = user._doc
+        // res.send(others);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
 export default router

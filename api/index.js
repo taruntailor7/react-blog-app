@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import mongoose from "mongoose"
 import authRoute from "./routes/auth.route.js"
 import usersRoute from  "./routes/users.route.js"
+import postRoute from "./routes/posts.route.js"
 
 dotenv.config();
 const app = express();
@@ -26,6 +27,7 @@ const connection = async () =>{
 
 app.use("/auth", authRoute);
 app.use("/users",usersRoute);
+app.use("/posts",postRoute);
 
 app.listen(3050, ()=>{
     try{
