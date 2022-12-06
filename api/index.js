@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
         callbackFn(null,"images")
     }, 
     filename:(req,file,callbackFn)=>{
-        callbackFn(null,"xyz.png")
+        callbackFn(null,req.body.name)
     }
 })
 
