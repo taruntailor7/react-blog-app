@@ -2,21 +2,15 @@ import express from "express";
 import cors from "cors";
 import dotenv from 'dotenv'
 import mongoose from "mongoose"
+import authRoute from "./routes/auth.route.js"
 
 dotenv.config();
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); 
 app.use(cors());
 
 let mongo_url = process.env.MONGO_URL
-
-app.get("/", (req, res) => {
-    res.send({
-        status: "success",
-        message:"Welcome to my blog website"
-    })
-})
 
 const connection = async () =>{
     try {
@@ -29,6 +23,7 @@ const connection = async () =>{
     }
 }
 
+app.use("/auth", authRoute);
 
 app.listen(3050, ()=>{
     try{
