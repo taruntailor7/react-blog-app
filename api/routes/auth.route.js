@@ -61,7 +61,7 @@ router.post('/login',async (req, res) => {
                     username: userExists.username
                 },JWT_SECRET)
 
-                console.log(token,"token")
+                // console.log(token,"token")
 
                 // Verifying...
                 let result = jwt.verify(token, JWT_SECRET);

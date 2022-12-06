@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from 'dotenv'
 import mongoose from "mongoose"
 import authRoute from "./routes/auth.route.js"
+import usersRoute from  "./routes/users.route.js"
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,7 @@ const connection = async () =>{
 }
 
 app.use("/auth", authRoute);
+app.use("/users",usersRoute);
 
 app.listen(3050, ()=>{
     try{
