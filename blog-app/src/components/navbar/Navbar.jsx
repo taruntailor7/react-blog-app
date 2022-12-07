@@ -42,7 +42,9 @@ export const Navbar = () => {
             <div className="topRight">
                 {
                     user ? (
-                        <img className="topImg" src={user.profilePic} alt="" />
+                        <NavLink to="/settings">
+                            <img className="topImg" src={user.profilePic} alt="" />
+                        </NavLink>
                     ) : (
                         <ul className="topList">
                             <li className="topListItem">

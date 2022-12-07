@@ -1,8 +1,11 @@
 import "./settings.css"
 import Sidebar from "../../components/sidebar/Sidebar"
 import { CgProfile } from 'react-icons/cg';
+import { useContext } from "react";
+import { Context } from "../../context/context";
 
 export const Settings = () => {
+  const {user} = useContext(Context)
   return (
     <div className="settings">
       <div className="settingsWrapper">
