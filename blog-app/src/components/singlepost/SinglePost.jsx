@@ -44,7 +44,6 @@ export default function SinglePost() {
         axios.put(`http://localhost:3050/posts/${postId}`, {username:user.username, title, desc})
         .then((response)=>{
             alert("Your blog has been updated!")
-            // setNavigate(true);
             setUpdateMode(false)
         })
         .catch(error=>console.log(error))
