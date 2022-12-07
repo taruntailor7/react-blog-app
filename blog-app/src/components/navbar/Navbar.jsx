@@ -7,11 +7,11 @@ import { Context } from "../../context/context";
 
 export const Navbar = () => {
     const {user, dispatch} = useContext(Context);
-    
+
     const handleLogout = ()=>{
         dispatch({type: 'LOGOUT'})
-    };
-
+    }
+    
     return (
         <div className="navbar">
             <div className="topLeft">
