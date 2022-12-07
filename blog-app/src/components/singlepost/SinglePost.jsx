@@ -8,8 +8,8 @@ import axios from "axios";
 export default function SinglePost() {
     const {postId} = useParams();
     const [post, setPost] = useState({});
-    const PF = "http://localhost:3050/images";
-
+    const PF = "http://localhost:3050/images/";
+    
     useEffect(()=>{
         getPost();
     // eslint-disable-next-line react-hooks/exhaustive-deps

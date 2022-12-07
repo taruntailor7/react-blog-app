@@ -11,7 +11,7 @@ export const Navbar = () => {
     const handleLogout = ()=>{
         dispatch({type: 'LOGOUT'})
     }
-    
+
     return (
         <div className="navbar">
             <div className="topLeft">
@@ -42,7 +42,7 @@ export const Navbar = () => {
             <div className="topRight">
                 {
                     user ? (
-                        <img className="topImg" src="https://avatars.githubusercontent.com/u/66818449?v=4" alt="" />
+                        <img className="topImg" src={user.profilePic} alt="" />
                     ) : (
                         <ul className="topList">
                             <li className="topListItem">

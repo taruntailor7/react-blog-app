@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import "./post.css"
 
 export const Post = ({post}) => {
-  const PF = "http://localhost:3050/images";
+  const PF = "http://localhost:3050/images/";
 
   return (
     <div className="post">
