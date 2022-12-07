@@ -4,7 +4,7 @@ import "./register.css"
 export const Register = () => {
   return (
     <div className="register">
-        <spna className="registerTitle">Register</spna>
+        <span className="registerTitle">Register</span>
         <form className="registerForm">
             <label>Username</label>
             <input type="text" className="registerInput" placeholder="Enter your username..."/>

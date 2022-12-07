@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import "./post.css"
 
 export const Post = ({post}) => {
@@ -11,10 +12,13 @@ export const Post = ({post}) => {
       )}
       <div className="postInfo">
           <div className="postCats">
-              <span className="postCat">Music</span>
-              <span className="postCat">Life</span>
+            {post.categories.map((c)=>(
+              <span key={c} className="postCat">{c}</span>
+            ))}
           </div>
-          <span className="postTitle">{post.title}</span>
+          <NavLink to={`/post/${post._id}`} className="link">
+            <span className="postTitle">{post.title}</span>
+          </NavLink>
           <hr />
           <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
           <p className="postDesc">{post.desc}</p>
