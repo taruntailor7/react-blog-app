@@ -44,7 +44,8 @@ export default function SinglePost() {
         axios.put(`http://localhost:3050/posts/${postId}`, {username:user.username, title, desc})
         .then((response)=>{
             alert("Your blog has been updated!")
-            setNavigate(true)
+            // setNavigate(true);
+            setUpdateMode(false)
         })
         .catch(error=>console.log(error))
     }
@@ -61,7 +62,7 @@ export default function SinglePost() {
             )}
             { updateMode ? (<input type="text" value={title} className="singlePostTitleInput" autoFocus onChange={(e)=>setTitle(e.target.value)}/>) : (
                 <h1 className="singlePostTitle">
-                    {post.title}
+                    {title}
                     {post.username === user?.username && (
                         <div className="singlePostEdit">
                             <BiEdit className="singlePostIcon" onClick={()=>setUpdateMode(true)}/>
@@ -81,9 +82,11 @@ export default function SinglePost() {
             { updateMode ? (
                 <textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)}/>
             ) : (
-                <p className="singlePostDesc">{post.desc}</p>
+                <p className="singlePostDesc">{desc}</p>
             )}
-            <button className="singlePostButton" onClick={handleUpdate}>Update</button>
+            {updateMode && (
+                <button className="singlePostButton" onClick={handleUpdate}>Update</button>
+            )}
         </div>
         </div>
     )
