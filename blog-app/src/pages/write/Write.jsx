@@ -27,7 +27,6 @@ export default function Write() {
             username: user.username,
             ...post,
         }
-
         if(file){
             const data = new FormData();
             const filename = Date.now() + file.name;
