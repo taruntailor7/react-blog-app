@@ -19,13 +19,13 @@ router.post('/register',async (req, res) => {
         if(userExists){
             return res.status(400).send({
                 status: false,
-                message: 'User already exists'
+                message: 'User already exists.'
             })
         }
         else if(usernameExists){
             return res.status(400).send({
                 status: false,
-                message: 'Username already taken'
+                message: 'Username already taken.'
             })
         }
         else{
@@ -35,7 +35,10 @@ router.post('/register',async (req, res) => {
             })
             newUser = newUser.toJSON();
             delete newUser.password;
-            return res.send(newUser);
+            return res.send({
+                message: 'User successfully registered.',
+                data: newUser
+            });
         }
     } catch (error) {
         res.status(500).send({
@@ -72,8 +75,9 @@ router.post('/login',async (req, res) => {
                 // console.log(result,"decrypted result");
 
                 return res.send({
-                    message:"Succesfully logged in",
-                    data : {token}
+                    message:"User succesfully logged in.",
+                    data : token,
+                    user:result
                 })
 
             } else {
@@ -85,7 +89,7 @@ router.post('/login',async (req, res) => {
         } else {
             return res.status(400).send({
                 status: false,
-                message: 'User does not exists'
+                message: 'User does not exists.'
             })
         }
 
