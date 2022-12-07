@@ -33,7 +33,6 @@ export const Login = () => {
       dispatch({type:"LOGIN_FAILURE"});
     }
   }
-  console.log(isFetching,"fetching");
 
   if(navigate){
     return <Navigate to="/"/>

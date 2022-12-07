@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from "react-router-dom";
+import { Context } from '../../context/context';
 import { Home } from '../../pages/home/Home';
 import { Login } from '../../pages/login/Login';
 import { NotFound } from '../../pages/notfound/NotFound';
@@ -9,7 +10,7 @@ import { Single } from '../../pages/single/Single';
 import Write from '../../pages/write/Write';
 
 export const AllRoutes = () => {
-  const user = false;
+  const {user} = useContext(Context)
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>

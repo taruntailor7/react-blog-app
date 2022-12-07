@@ -2,12 +2,14 @@ import { NavLink } from "react-router-dom"
 import "./post.css"
 
 export const Post = ({post}) => {
+  const PF = "http://localhost:3050/images";
+
   return (
     <div className="post">
       {post.photo && (
         <img 
         className="postImg" 
-        src={post.photo} 
+        src={PF+post.photo} 
         alt="" />
       )}
       <div className="postInfo">

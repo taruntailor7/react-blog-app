@@ -2,9 +2,16 @@ import "./navbar.css"
 import { FaFacebookSquare,FaTwitterSquare,FaPinterestSquare,FaInstagramSquare } from 'react-icons/fa';
 import { HiSearch } from 'react-icons/hi'
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/context";
 
 export const Navbar = () => {
-    const user = false;
+    const {user, dispatch} = useContext(Context);
+    
+    const handleLogout = ()=>{
+        dispatch({type: 'LOGOUT'})
+    };
+
     return (
         <div className="navbar">
             <div className="topLeft">
@@ -28,7 +35,7 @@ export const Navbar = () => {
                         <NavLink className="link" to="/write">WRITE</NavLink>
                     </li>
                     <li className="topListItem">
-                        <NavLink className="link">{user && "LOGOUT"}</NavLink>
+                        <NavLink className="link" onClick={handleLogout}>{user && "LOGOUT"}</NavLink>
                     </li>
                 </ul>
             </div>
