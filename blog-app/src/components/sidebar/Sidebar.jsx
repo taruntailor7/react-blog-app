@@ -19,9 +19,9 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebarItem">
-        <span className="sidebarTitle">ABOUT ME</span>
+        <span className="sidebarTitle">ABOUT BLOGS</span>
         <img  src="https://www.techprevue.com/wp-content/uploads/2015/03/top-educational-blogs.jpg" alt="" />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit in diam non pro id el us already have a good day to live.</p>
+        <p>When blogging started, the first blogs were really glorified online journals, and in all likelihood, becoming a professional blogger and making money online wasn't the goal. Since then, the blogosphere has evolved, and now people blog for many different reasons. There are even distinctions among types of blogs - business, lifestyle, fashion, food, and entertainment blogs, among others.</p>
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
