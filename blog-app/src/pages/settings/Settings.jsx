@@ -57,9 +57,9 @@ export const Settings = () => {
         <form className="settingsForm" onSubmit={handleSubmit}>
             <label>Profile Picture</label>
             <div className="settingsPP">
-                <img  src={file ? URL.createObjectURL(file) : PF+user.profilePic} alt="" />
+              {user.profilePic === "" ? <img  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png" alt="" /> :<img  src={file ? URL.createObjectURL(file) : PF+user.profilePic} alt="" />}
                 <label htmlFor="fileInput">
-                    <CgProfile className="settingsPPIcon"/>
+                  <CgProfile className="settingsPPIcon"/>
                 </label>
                 <input type="file" id="fileInput" style={{display:"none"}} onChange={(e)=>setFile(e.target.files[0])}/>
             </div>
