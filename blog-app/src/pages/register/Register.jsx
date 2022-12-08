@@ -1,7 +1,9 @@
 import { useState } from "react"
-import { Navigate, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "./register.css"
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let initState = {
   username: "",
@@ -11,29 +13,45 @@ let initState = {
 
 export const Register = () => {
   const [user, setUser] = useState(initState);
-  const [error, setError] = useState(false);
-  const [navigate, setNavigate] = useState(false);
+  // const [error, setError] = useState(false);
+  // const [navigate, setNavigate] = useState(false);
 
   const handleChange = (e)=>{
     const {name, value} = e.target
     setUser({...user,[name]:value})
   }
-
+  const showToastSuccessMessage = (msg) => {
+      toast.success(msg, {
+          position: toast.POSITION.TOP_CENTER
+      });
+      // setNavigate(true)
+  };
+  const showToastErrorMessage = (msg) => {
+    toast.error(msg, {
+        position: toast.POSITION.TOP_CENTER
+    });
+    
+};
   const handleSubmit = async (e)=>{
     e.preventDefault();
-      setError(false)
-      axios.post("http://localhost:3050/auth/register",user)
+      // setError(false)
+      axios.post("http://localhost:3050/auth/register",user)  
       .then(response =>{
           setUser(response.data.data)
-          alert(response.data.message)
-          setNavigate(true)
+          showToastSuccessMessage(response.data.message)
+          setUser(initState)
       })
-      .catch(err => setError(true))
+      .catch(err => {
+        console.log(err.response.data.message,"in register")
+        // setError(true)
+        showToastErrorMessage(err.response.data.message);
+        setUser(initState)
+      })
   }
 
-  if(navigate){
-    return <Navigate to="/login" />
-  }
+  // if(navigate){
+  //   return <Navigate to="/login" />
+  // }
 
   return (
     <div className="register">
@@ -51,7 +69,8 @@ export const Register = () => {
           <NavLink to="/login" className="link">Login</NavLink>
         </button>
         <br />
-        {error && <span style={{color: 'red'}}>User already registered!</span>}
+        {/* {error && <span style={{color: 'red'}}>User already registered!</span>} */}
+        <ToastContainer />
     </div>
   )
 }
