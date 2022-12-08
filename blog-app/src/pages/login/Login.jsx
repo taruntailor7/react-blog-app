@@ -3,6 +3,8 @@ import { useContext, useState } from "react"
 import { Navigate, NavLink } from "react-router-dom"
 import { Context } from "../../context/context"
 import "./login.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let initState = {
     username : "",
@@ -18,6 +20,17 @@ export const Login = () => {
     const {name, value} = e.target;
     setUser({...loginuser, [name]:value})
   }
+
+  const showToastSuccessMessage = (msg) => {
+    toast.success(msg, {
+        position: toast.POSITION.TOP_CENTER
+    });
+  };
+  const showToastErrorMessage = (msg) => {
+    toast.error(msg, {
+        position: toast.POSITION.TOP_CENTER
+    });
+  };
   
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -26,11 +39,11 @@ export const Login = () => {
     try {
       const res = await axios.post("http://localhost:3050/auth/login", loginuser);
       dispatch({type:"LOGIN_SUCCESS", payload:res.data});
-      alert(res.data.message);
       setNavigate(true)
+      showToastSuccessMessage(res.data.message)
     } catch (error) {
-      console.log(error)
       dispatch({type:"LOGIN_FAILURE"});
+      showToastErrorMessage(error.response.data.message)
     }
   }
 
@@ -51,6 +64,7 @@ export const Login = () => {
         <button className="loginRegisterButton">
           <NavLink to="/register" className="link">Register</NavLink>
         </button>
+        <ToastContainer />
     </div>
   )
 }
