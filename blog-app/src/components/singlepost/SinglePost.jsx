@@ -5,6 +5,8 @@ import { Navigate, NavLink, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/context"
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SinglePost() {
     const {postId} = useParams();
@@ -20,6 +22,12 @@ export default function SinglePost() {
         getPost();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+
+    const showToastSuccessMessage = (msg) => {
+        toast.success(msg, {
+            position: toast.POSITION.TOP_CENTER
+        });
+    };
 
     const getPost = ()=>{
         axios.get(`http://localhost:3050/posts/${postId}`)
@@ -43,7 +51,7 @@ export default function SinglePost() {
     const handleUpdate = ()=>{
         axios.put(`http://localhost:3050/posts/${postId}`, {username:user.username, title, desc})
         .then((response)=>{
-            alert("Your blog has been updated!")
+            showToastSuccessMessage("Your blog has been updated!")
             setUpdateMode(false)
         })
         .catch(error=>console.log(error))
@@ -55,38 +63,39 @@ export default function SinglePost() {
 
     return (
         <div className="singlePost">
-        <div className="singlePostWrapper">
-            {post.photo && (
-                <img src={PF+post.photo} alt="" className="singlePostImg" />
-            )}
-            { updateMode ? (<input type="text" value={title} className="singlePostTitleInput" autoFocus onChange={(e)=>setTitle(e.target.value)}/>) : (
-                <h1 className="singlePostTitle">
-                    {title}
-                    {post.username === user?.username && (
-                        <div className="singlePostEdit">
-                            <BiEdit className="singlePostIcon" onClick={()=>setUpdateMode(true)}/>
-                            <RiDeleteBinLine className="singlePostIcon" onClick={handleDelete}/>
-                        </div>
-                    )}
-                </h1>
-            )}
-            <div className="singlePostInfo">
-                <span className="singlePostAuthor">
-                    Author : <NavLink to={`/?user=${post.username}`} className="link"><b>{post.username}</b></NavLink>
-                </span>
-                <span className="singlePostDate">
-                    {new Date(post.createdAt).toDateString()}
-                </span>
+            <div className="singlePostWrapper">
+                {post.photo && (
+                    <img src={PF+post.photo} alt="" className="singlePostImg" />
+                )}
+                { updateMode ? (<input type="text" value={title} className="singlePostTitleInput" autoFocus onChange={(e)=>setTitle(e.target.value)}/>) : (
+                    <h1 className="singlePostTitle">
+                        {title}
+                        {post.username === user?.username && (
+                            <div className="singlePostEdit">
+                                <BiEdit className="singlePostIcon" onClick={()=>setUpdateMode(true)}/>
+                                <RiDeleteBinLine className="singlePostIcon" onClick={handleDelete}/>
+                            </div>
+                        )}
+                    </h1>
+                )}
+                <div className="singlePostInfo">
+                    <span className="singlePostAuthor">
+                        Author : <NavLink to={`/?user=${post.username}`} className="link"><b>{post.username}</b></NavLink>
+                    </span>
+                    <span className="singlePostDate">
+                        {new Date(post.createdAt).toDateString()}
+                    </span>
+                </div>
+                { updateMode ? (
+                    <textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)}/>
+                ) : (
+                    <p className="singlePostDesc">{desc}</p>
+                )}
+                {updateMode && (
+                    <button className="singlePostButton" onClick={handleUpdate}>Update</button>
+                )}
             </div>
-            { updateMode ? (
-                <textarea className="singlePostDescInput" value={desc} onChange={(e)=>setDesc(e.target.value)}/>
-            ) : (
-                <p className="singlePostDesc">{desc}</p>
-            )}
-            {updateMode && (
-                <button className="singlePostButton" onClick={handleUpdate}>Update</button>
-            )}
-        </div>
+            <ToastContainer />
         </div>
     )
 }
