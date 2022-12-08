@@ -4,6 +4,8 @@ import { useContext, useState } from "react";
 import { Context } from "../../context/context"
 import axios from "axios"
 import { Navigate } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let initState = {
     title:"",
@@ -20,6 +22,13 @@ export default function Write() {
         const {name, value} = e.target
         setPost({...post, [name]:value})
     }
+
+    const showToastSuccessMessage = (msg) => {
+        toast.success(msg, {
+            position: toast.POSITION.TOP_CENTER
+        });
+        setNavigate(true)
+    };
     // var navigateUrl ;
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -42,7 +51,7 @@ export default function Write() {
 
         try {
             await axios.post("http://localhost:3050/posts", newPost)
-            setNavigate(true);
+            showToastSuccessMessage("Your blog has been posted successfully!")
         } catch (error) {
             console.log(error,"error")
         }
@@ -70,6 +79,7 @@ export default function Write() {
                 </div>
                 <button type="submit" className="writeSubmit">Publish</button>
             </form> 
+            <ToastContainer />
         </div>
     )
 }

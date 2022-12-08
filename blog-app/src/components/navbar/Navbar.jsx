@@ -5,13 +5,24 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/context";
 import { BiUserCircle } from 'react-icons/bi'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const Navbar = () => {
     const {user, dispatch} = useContext(Context);
     const PF = "http://localhost:3050/images/";
 
+    const showToastErrorMessage = (msg) => {
+        toast.error(msg, {
+            position: toast.POSITION.TOP_CENTER
+        });
+        
+    };
+
     const handleLogout = ()=>{
         dispatch({type: 'LOGOUT'})
+        showToastErrorMessage("You have been logged out!")
     }
 
     return (
@@ -60,6 +71,7 @@ export const Navbar = () => {
                 }
                 {/* <HiSearch /> */}
             </div>
+            <ToastContainer />
         </div>
     )
 }

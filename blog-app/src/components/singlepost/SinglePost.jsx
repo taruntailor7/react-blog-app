@@ -42,8 +42,8 @@ export default function SinglePost() {
     const handleDelete = ()=>{
         axios.delete(`http://localhost:3050/posts/${postId}`, {data: {username:user.username}})
         .then((response)=>{
-            alert(response.data.message)
             setNavigate(true)
+            showToastSuccessMessage("Your post has been deleted successfully!")
         })
         .catch(error=>console.log(error))
     }

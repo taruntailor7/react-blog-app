@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Navigate,NavLink } from "react-router-dom"
 import "./register.css"
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
@@ -14,7 +14,7 @@ let initState = {
 export const Register = () => {
   const [user, setUser] = useState(initState);
   // const [error, setError] = useState(false);
-  // const [navigate, setNavigate] = useState(false);
+  const [navigate, setNavigate] = useState(false);
 
   const handleChange = (e)=>{
     const {name, value} = e.target
@@ -24,7 +24,7 @@ export const Register = () => {
       toast.success(msg, {
           position: toast.POSITION.TOP_CENTER
       });
-      // setNavigate(true)
+      setNavigate(true)
   };
   const showToastErrorMessage = (msg) => {
     toast.error(msg, {
@@ -38,8 +38,8 @@ export const Register = () => {
       axios.post("http://localhost:3050/auth/register",user)  
       .then(response =>{
           setUser(response.data.data)
-          showToastSuccessMessage(response.data.message)
           setUser(initState)
+          showToastSuccessMessage(response.data.message)
       })
       .catch(err => {
         console.log(err.response.data.message,"in register")
@@ -49,9 +49,9 @@ export const Register = () => {
       })
   }
 
-  // if(navigate){
-  //   return <Navigate to="/login" />
-  // }
+  if(navigate){
+    return <Navigate to="/login" />
+  }
 
   return (
     <div className="register">
