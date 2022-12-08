@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Navbar = () => {
     const {user, dispatch} = useContext(Context);
-    const PF = "http://localhost:3050/images/";
+    const PF = "https://viniya-blog.onrender.com/images/";
 
     const showToastErrorMessage = (msg) => {
         toast.error(msg, {

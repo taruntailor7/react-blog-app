@@ -15,7 +15,7 @@ export const Settings = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
-  const PF = "http://localhost:3050/images/";
+  const PF = "https://viniya-blog.onrender.com/images/";
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -33,14 +33,14 @@ export const Settings = () => {
         data.append("file",file);
         updatesUser.profilePic = filename;
         try{
-            await axios.post("http://localhost:3050/upload", data)
+            await axios.post("https://viniya-blog.onrender.com/upload", data)
         } catch(err) {
             console.log(err,"err")
         }
     }
 
     try {
-        const res = await axios.put(`http://localhost:3050/users/${user._id}`, updatesUser)
+        const res = await axios.put(`https://viniya-blog.onrender.com/users/${user._id}`, updatesUser)
         setSuccess(true)
         dispatch({type: "UPDATE_SUCCESS", payload:res.data})
         showToastSuccessMessage("Your profile has been updated and please login again.")

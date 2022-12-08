@@ -12,7 +12,7 @@ export default function SinglePost() {
     const {postId} = useParams();
     const [post, setPost] = useState({});
     const [navigate, setNavigate] = useState(false)
-    const PF = "http://localhost:3050/images/";
+    const PF = "https://viniya-blog.onrender.com/images/";
     const {user} = useContext(Context)
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
@@ -30,7 +30,7 @@ export default function SinglePost() {
     };
 
     const getPost = ()=>{
-        axios.get(`http://localhost:3050/posts/${postId}`)
+        axios.get(`https://viniya-blog.onrender.com/posts/${postId}`)
         .then((response)=>{
             setPost(response.data)
             setTitle(response.data.title)
@@ -40,7 +40,7 @@ export default function SinglePost() {
     }
 
     const handleDelete = ()=>{
-        axios.delete(`http://localhost:3050/posts/${postId}`, {data: {username:user.username}})
+        axios.delete(`https://viniya-blog.onrender.com/posts/${postId}`, {data: {username:user.username}})
         .then((response)=>{
             setNavigate(true)
             showToastSuccessMessage("Your post has been deleted successfully!")
@@ -49,7 +49,7 @@ export default function SinglePost() {
     }
 
     const handleUpdate = ()=>{
-        axios.put(`http://localhost:3050/posts/${postId}`, {username:user.username, title, desc})
+        axios.put(`https://viniya-blog.onrender.com/posts/${postId}`, {username:user.username, title, desc})
         .then((response)=>{
             showToastSuccessMessage("Your blog has been updated!")
             setUpdateMode(false)

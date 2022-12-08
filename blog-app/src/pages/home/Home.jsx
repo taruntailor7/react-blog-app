@@ -16,7 +16,7 @@ export const Home = () => {
   },[search])
 
   const getPosts = async () =>{
-    axios.get("http://localhost:3050/posts"+search)
+    axios.get("https://viniya-blog.onrender.com/posts"+search)
     .then((res)=>setPosts(res.data.data))
   }
 

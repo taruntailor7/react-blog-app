@@ -35,7 +35,7 @@ export const Register = () => {
   const handleSubmit = async (e)=>{
     e.preventDefault();
       // setError(false)
-      axios.post("http://localhost:3050/auth/register",user)  
+      axios.post("https://viniya-blog.onrender.com/auth/register",user)  
       .then(response =>{
           setUser(response.data.data)
           setUser(initState)

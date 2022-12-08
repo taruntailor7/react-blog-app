@@ -12,7 +12,7 @@ const Sidebar = () => {
   },[])
   
   const getCategories = ()=>{
-    axios.get(`http://localhost:3050/categories`)
+    axios.get(`https://viniya-blog.onrender.com/categories`)
     .then((response)=>setCategories(response.data.data))
   }
   
