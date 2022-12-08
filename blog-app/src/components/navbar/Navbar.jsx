@@ -17,7 +17,6 @@ export const Navbar = () => {
         toast.error(msg, {
             position: toast.POSITION.TOP_CENTER
         });
-        
     };
 
     const handleLogout = ()=>{
