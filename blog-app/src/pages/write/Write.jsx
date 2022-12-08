@@ -48,7 +48,6 @@ export default function Write() {
                 console.log(err,"err")
             }
         }
-
         try {
             await axios.post("http://localhost:3050/posts", newPost)
             showToastSuccessMessage("Your blog has been posted successfully!")
